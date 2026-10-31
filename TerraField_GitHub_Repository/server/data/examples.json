@@ -1,0 +1,37 @@
+[
+  {
+    "id": "monsoon",
+    "name": "Warm, wet season",
+    "region": "Illustrative tropical profile",
+    "description": "Medium-textured soil in a warm, rainy growing region.",
+    "profile": {"name":"Warm, wet season", "soil_type":"loamy", "ph":6.3, "rainfall":1700, "temperature":27, "humidity":78, "season":"wet", "nitrogen":null, "phosphorus":null, "potassium":null, "source":"example"}
+  },
+  {
+    "id": "cool-loam",
+    "name": "Cool-season loam",
+    "region": "Illustrative temperate profile",
+    "description": "A moderate-rainfall, cool growing season.",
+    "profile": {"name":"Cool-season loam", "soil_type":"loamy", "ph":6.8, "rainfall":825, "temperature":18, "humidity":60, "season":"cool", "nitrogen":null, "phosphorus":null, "potassium":null, "source":"example"}
+  },
+  {
+    "id": "dryland",
+    "name": "Warm dryland",
+    "region": "Illustrative semi-arid profile",
+    "description": "A warm, low-rainfall site with light soil.",
+    "profile": {"name":"Warm dryland", "soil_type":"sandy", "ph":6.2, "rainfall":450, "temperature":30, "humidity":42, "season":"dry", "nitrogen":null, "phosphorus":null, "potassium":null, "source":"example"}
+  },
+  {
+    "id": "acid-highland",
+    "name": "Mild acidic highland",
+    "region": "Illustrative highland profile",
+    "description": "Mild temperatures and moderately acidic soil.",
+    "profile": {"name":"Mild acidic highland", "soil_type":"sandy_loam", "ph":5.4, "rainfall":700, "temperature":19, "humidity":70, "season":"cool", "nitrogen":null, "phosphorus":null, "potassium":null, "source":"example"}
+  },
+  {
+    "id": "warm-heavy",
+    "name": "Warm heavy soil",
+    "region": "Illustrative warm-season profile",
+    "description": "Heavier soil, moderate rainfall and warm temperatures.",
+    "profile": {"name":"Warm heavy soil", "soil_type":"clayey", "ph":7.3, "rainfall":800, "temperature":30, "humidity":65, "season":"wet", "nitrogen":null, "phosphorus":null, "potassium":null, "source":"example"}
+  }
+]

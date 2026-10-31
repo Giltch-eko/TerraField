@@ -1,0 +1,1107 @@
+[
+  {
+    "id": "rice",
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "icon": "🌾",
+    "category": "Cereal",
+    "ecocrop_id": 1574,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1574",
+    "temperature": {
+      "optimal": [
+        20.0,
+        30.0
+      ],
+      "absolute": [
+        10.0,
+        36.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        1500.0,
+        2000.0
+      ],
+      "absolute": [
+        1000.0,
+        4000.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        7.0
+      ],
+      "absolute": [
+        4.5,
+        9.0
+      ]
+    },
+    "texture_optimal": "wide",
+    "texture_absolute": "wide",
+    "cycle_days": [
+      80.0,
+      180.0
+    ],
+    "humidity_heuristic": [
+      60,
+      90
+    ],
+    "season_heuristic": [
+      "wet"
+    ]
+  },
+  {
+    "id": "maize",
+    "name": "Maize",
+    "scientific_name": "Zea mays",
+    "icon": "🌽",
+    "category": "Cereal",
+    "ecocrop_id": 2175,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175",
+    "temperature": {
+      "optimal": [
+        18.0,
+        33.0
+      ],
+      "absolute": [
+        10.0,
+        47.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1200.0
+      ],
+      "absolute": [
+        400.0,
+        1800.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.0,
+        7.0
+      ],
+      "absolute": [
+        4.5,
+        8.5
+      ]
+    },
+    "texture_optimal": "",
+    "texture_absolute": "",
+    "cycle_days": [
+      65.0,
+      365.0
+    ],
+    "humidity_heuristic": [
+      45,
+      85
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "wheat",
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "icon": "🌾",
+    "category": "Cereal",
+    "ecocrop_id": 2114,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2114",
+    "temperature": {
+      "optimal": [
+        15.0,
+        23.0
+      ],
+      "absolute": [
+        5.0,
+        27.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        750.0,
+        900.0
+      ],
+      "absolute": [
+        300.0,
+        1600.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        6.0,
+        7.0
+      ],
+      "absolute": [
+        5.5,
+        8.5
+      ]
+    },
+    "texture_optimal": "medium, organic",
+    "texture_absolute": "heavy, medium",
+    "cycle_days": [
+      90.0,
+      250.0
+    ],
+    "humidity_heuristic": [
+      40,
+      75
+    ],
+    "season_heuristic": [
+      "cool"
+    ]
+  },
+  {
+    "id": "soybean",
+    "name": "Soybean",
+    "scientific_name": "Glycine max",
+    "icon": "🫘",
+    "category": "Legume",
+    "ecocrop_id": 1150,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1150",
+    "temperature": {
+      "optimal": [
+        20.0,
+        33.0
+      ],
+      "absolute": [
+        10.0,
+        38.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1500.0
+      ],
+      "absolute": [
+        450.0,
+        1800.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        6.5
+      ],
+      "absolute": [
+        4.5,
+        8.4
+      ]
+    },
+    "texture_optimal": "medium, organic",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      75.0,
+      180.0
+    ],
+    "humidity_heuristic": [
+      50,
+      85
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "chickpea",
+    "name": "Chickpea",
+    "scientific_name": "Cicer arietinum",
+    "icon": "🫘",
+    "category": "Legume",
+    "ecocrop_id": 2479,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2479",
+    "temperature": {
+      "optimal": [
+        15.0,
+        29.0
+      ],
+      "absolute": [
+        7.0,
+        35.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1000.0
+      ],
+      "absolute": [
+        300.0,
+        1800.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        6.0,
+        8.5
+      ],
+      "absolute": [
+        4.7,
+        9.5
+      ]
+    },
+    "texture_optimal": "heavy, medium",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      90.0,
+      180.0
+    ],
+    "humidity_heuristic": [
+      30,
+      70
+    ],
+    "season_heuristic": [
+      "cool",
+      "dry"
+    ]
+  },
+  {
+    "id": "sorghum",
+    "name": "Sorghum",
+    "scientific_name": "Sorghum bicolor",
+    "icon": "🌾",
+    "category": "Cereal",
+    "ecocrop_id": 48747,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=48747",
+    "temperature": {
+      "optimal": [
+        22.0,
+        35.0
+      ],
+      "absolute": [
+        8.0,
+        40.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        400.0,
+        600.0
+      ],
+      "absolute": [
+        300.0,
+        700.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        7.5
+      ],
+      "absolute": [
+        5.0,
+        8.0
+      ]
+    },
+    "texture_optimal": "heavy, medium",
+    "texture_absolute": "wide",
+    "cycle_days": [
+      90.0,
+      300.0
+    ],
+    "humidity_heuristic": [
+      30,
+      70
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "pearl-millet",
+    "name": "Pearl millet",
+    "scientific_name": "Pennisetum glaucum",
+    "icon": "🌾",
+    "category": "Cereal",
+    "ecocrop_id": 8418,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8418",
+    "temperature": {
+      "optimal": [
+        25.0,
+        35.0
+      ],
+      "absolute": [
+        12.0,
+        40.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        400.0,
+        900.0
+      ],
+      "absolute": [
+        200.0,
+        1700.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.0,
+        6.5
+      ],
+      "absolute": [
+        4.5,
+        8.3
+      ]
+    },
+    "texture_optimal": "medium, light",
+    "texture_absolute": "medium, light",
+    "cycle_days": [
+      60.0,
+      120.0
+    ],
+    "humidity_heuristic": [
+      20,
+      65
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "potato",
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "icon": "🥔",
+    "category": "Vegetable",
+    "ecocrop_id": 1971,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1971",
+    "temperature": {
+      "optimal": [
+        15.0,
+        25.0
+      ],
+      "absolute": [
+        7.0,
+        30.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        500.0,
+        800.0
+      ],
+      "absolute": [
+        250.0,
+        2000.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.0,
+        6.2
+      ],
+      "absolute": [
+        4.2,
+        8.5
+      ]
+    },
+    "texture_optimal": "medium, organic",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      90.0,
+      160.0
+    ],
+    "humidity_heuristic": [
+      55,
+      85
+    ],
+    "season_heuristic": [
+      "cool"
+    ]
+  },
+  {
+    "id": "tomato",
+    "name": "Tomato",
+    "scientific_name": "Lycopersicon esculentum",
+    "icon": "🍅",
+    "category": "Vegetable",
+    "ecocrop_id": 1379,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1379",
+    "temperature": {
+      "optimal": [
+        20.0,
+        27.0
+      ],
+      "absolute": [
+        7.0,
+        35.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1300.0
+      ],
+      "absolute": [
+        400.0,
+        1800.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        6.8
+      ],
+      "absolute": [
+        5.0,
+        7.5
+      ]
+    },
+    "texture_optimal": "medium, organic",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      70.0,
+      150.0
+    ],
+    "humidity_heuristic": [
+      45,
+      75
+    ],
+    "season_heuristic": [
+      "cool",
+      "dry"
+    ]
+  },
+  {
+    "id": "cotton",
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "icon": "🌿",
+    "category": "Fibre",
+    "ecocrop_id": 1160,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1160",
+    "temperature": {
+      "optimal": [
+        22.0,
+        36.0
+      ],
+      "absolute": [
+        15.0,
+        42.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        750.0,
+        1200.0
+      ],
+      "absolute": [
+        450.0,
+        1500.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        6.0,
+        7.5
+      ],
+      "absolute": [
+        5.0,
+        9.5
+      ]
+    },
+    "texture_optimal": "heavy, medium",
+    "texture_absolute": "heavy, medium, light, organic",
+    "cycle_days": [
+      150.0,
+      200.0
+    ],
+    "humidity_heuristic": [
+      40,
+      75
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "groundnut",
+    "name": "Groundnut",
+    "scientific_name": "Arachis hypogaea",
+    "icon": "🥜",
+    "category": "Legume",
+    "ecocrop_id": 2199,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2199",
+    "temperature": {
+      "optimal": [
+        22.0,
+        32.0
+      ],
+      "absolute": [
+        10.0,
+        45.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1500.0
+      ],
+      "absolute": [
+        400.0,
+        4000.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        6.5
+      ],
+      "absolute": [
+        4.5,
+        8.5
+      ]
+    },
+    "texture_optimal": "medium",
+    "texture_absolute": "heavy, medium, light, organic",
+    "cycle_days": [
+      90.0,
+      150.0
+    ],
+    "humidity_heuristic": [
+      40,
+      80
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "arabica-coffee",
+    "name": "Arabica coffee",
+    "scientific_name": "Coffea arabica",
+    "icon": "☕",
+    "category": "Perennial",
+    "ecocrop_id": 749,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=749",
+    "temperature": {
+      "optimal": [
+        14.0,
+        28.0
+      ],
+      "absolute": [
+        10.0,
+        34.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        1400.0,
+        2300.0
+      ],
+      "absolute": [
+        750.0,
+        4200.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        7.0
+      ],
+      "absolute": [
+        4.3,
+        8.4
+      ]
+    },
+    "texture_optimal": "medium, organic",
+    "texture_absolute": "medium, light",
+    "cycle_days": [
+      210.0,
+      330.0
+    ],
+    "humidity_heuristic": [
+      60,
+      90
+    ],
+    "season_heuristic": [
+      "any"
+    ]
+  },
+  {
+    "id": "barley",
+    "name": "Barley",
+    "scientific_name": "Hordeum vulgare",
+    "icon": "🌾",
+    "category": "Cereal",
+    "ecocrop_id": 1232,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1232",
+    "temperature": {
+      "optimal": [
+        15.0,
+        20.0
+      ],
+      "absolute": [
+        2.0,
+        40.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        500.0,
+        1000.0
+      ],
+      "absolute": [
+        200.0,
+        2000.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        6.5,
+        7.5
+      ],
+      "absolute": [
+        6.0,
+        8.0
+      ]
+    },
+    "texture_optimal": "medium",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      90.0,
+      240.0
+    ],
+    "humidity_heuristic": [
+      35,
+      75
+    ],
+    "season_heuristic": [
+      "cool"
+    ]
+  },
+  {
+    "id": "common-bean",
+    "name": "Common bean",
+    "scientific_name": "Phaseolus vulgaris",
+    "icon": "🫘",
+    "category": "Legume",
+    "ecocrop_id": 1668,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668",
+    "temperature": {
+      "optimal": [
+        16.0,
+        25.0
+      ],
+      "absolute": [
+        7.0,
+        32.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        500.0,
+        2000.0
+      ],
+      "absolute": [
+        300.0,
+        4300.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        7.5
+      ],
+      "absolute": [
+        4.0,
+        9.0
+      ]
+    },
+    "texture_optimal": "medium, organic",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      50.0,
+      270.0
+    ],
+    "humidity_heuristic": [
+      45,
+      80
+    ],
+    "season_heuristic": [
+      "cool",
+      "wet"
+    ]
+  },
+  {
+    "id": "cowpea",
+    "name": "Cowpea",
+    "scientific_name": "Vigna unguiculata",
+    "icon": "🫘",
+    "category": "Legume",
+    "ecocrop_id": 2153,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2153",
+    "temperature": {
+      "optimal": [
+        25.0,
+        35.0
+      ],
+      "absolute": [
+        15.0,
+        40.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        500.0,
+        1500.0
+      ],
+      "absolute": [
+        300.0,
+        4100.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        7.5
+      ],
+      "absolute": [
+        4.0,
+        8.8
+      ]
+    },
+    "texture_optimal": "medium, light",
+    "texture_absolute": "heavy, medium, light, wide",
+    "cycle_days": [
+      30.0,
+      240.0
+    ],
+    "humidity_heuristic": [
+      35,
+      75
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "canola",
+    "name": "Canola",
+    "scientific_name": "Brassica napus",
+    "icon": "🌼",
+    "category": "Oilseed",
+    "ecocrop_id": 549,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=549",
+    "temperature": {
+      "optimal": [
+        15.0,
+        25.0
+      ],
+      "absolute": [
+        5.0,
+        41.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        500.0,
+        1000.0
+      ],
+      "absolute": [
+        400.0,
+        2800.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        6.5,
+        7.6
+      ],
+      "absolute": [
+        5.5,
+        8.0
+      ]
+    },
+    "texture_optimal": "medium, light",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      85.0,
+      340.0
+    ],
+    "humidity_heuristic": [
+      40,
+      80
+    ],
+    "season_heuristic": [
+      "cool"
+    ]
+  },
+  {
+    "id": "okra",
+    "name": "Okra",
+    "scientific_name": "Abelmoschus esculentus",
+    "icon": "🌱",
+    "category": "Vegetable",
+    "ecocrop_id": 289,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=289",
+    "temperature": {
+      "optimal": [
+        20.0,
+        30.0
+      ],
+      "absolute": [
+        12.0,
+        35.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1200.0
+      ],
+      "absolute": [
+        300.0,
+        2500.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        7.0
+      ],
+      "absolute": [
+        4.5,
+        8.7
+      ]
+    },
+    "texture_optimal": "heavy, medium, light, organic",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      50.0,
+      180.0
+    ],
+    "humidity_heuristic": [
+      50,
+      85
+    ],
+    "season_heuristic": [
+      "wet",
+      "dry"
+    ]
+  },
+  {
+    "id": "sugarcane",
+    "name": "Sugarcane",
+    "scientific_name": "Saccharum officinarum",
+    "icon": "🎋",
+    "category": "Perennial",
+    "ecocrop_id": 1884,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1884",
+    "temperature": {
+      "optimal": [
+        24.0,
+        37.0
+      ],
+      "absolute": [
+        15.0,
+        41.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        1500.0,
+        2000.0
+      ],
+      "absolute": [
+        1000.0,
+        5000.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.0,
+        8.0
+      ],
+      "absolute": [
+        4.5,
+        9.0
+      ]
+    },
+    "texture_optimal": "",
+    "texture_absolute": "",
+    "cycle_days": [
+      210.0,
+      365.0
+    ],
+    "humidity_heuristic": [
+      55,
+      90
+    ],
+    "season_heuristic": [
+      "any"
+    ]
+  },
+  {
+    "id": "cassava",
+    "name": "Cassava",
+    "scientific_name": "Manihot esculenta",
+    "icon": "🌱",
+    "category": "Root crop",
+    "ecocrop_id": 1420,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420",
+    "temperature": {
+      "optimal": [
+        20.0,
+        29.0
+      ],
+      "absolute": [
+        10.0,
+        35.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        1000.0,
+        1500.0
+      ],
+      "absolute": [
+        500.0,
+        5000.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        8.0
+      ],
+      "absolute": [
+        4.0,
+        9.0
+      ]
+    },
+    "texture_optimal": "medium, light",
+    "texture_absolute": "heavy, medium, light, organic",
+    "cycle_days": [
+      180.0,
+      365.0
+    ],
+    "humidity_heuristic": [
+      50,
+      90
+    ],
+    "season_heuristic": [
+      "any"
+    ]
+  },
+  {
+    "id": "lentil",
+    "name": "Lentil",
+    "scientific_name": "Lens culinaris",
+    "icon": "🫘",
+    "category": "Legume",
+    "ecocrop_id": 7209,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7209",
+    "temperature": {
+      "optimal": [
+        15.0,
+        29.0
+      ],
+      "absolute": [
+        5.0,
+        32.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1000.0
+      ],
+      "absolute": [
+        250.0,
+        2500.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        5.5,
+        7.5
+      ],
+      "absolute": [
+        4.5,
+        8.2
+      ]
+    },
+    "texture_optimal": "heavy, medium",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      70.0,
+      240.0
+    ],
+    "humidity_heuristic": [
+      30,
+      70
+    ],
+    "season_heuristic": [
+      "cool",
+      "dry"
+    ]
+  },
+  {
+    "id": "sunflower",
+    "name": "Sunflower",
+    "scientific_name": "Helianthus annuus",
+    "icon": "🌻",
+    "category": "Oilseed",
+    "ecocrop_id": 1191,
+    "source_url": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1191",
+    "temperature": {
+      "optimal": [
+        17.0,
+        34.0
+      ],
+      "absolute": [
+        5.0,
+        45.0
+      ]
+    },
+    "rainfall": {
+      "optimal": [
+        600.0,
+        1000.0
+      ],
+      "absolute": [
+        300.0,
+        1600.0
+      ]
+    },
+    "ph": {
+      "optimal": [
+        6.0,
+        7.5
+      ],
+      "absolute": [
+        5.5,
+        8.0
+      ]
+    },
+    "texture_optimal": "medium, light",
+    "texture_absolute": "heavy, medium, light",
+    "cycle_days": [
+      70.0,
+      200.0
+    ],
+    "humidity_heuristic": [
+      35,
+      75
+    ],
+    "season_heuristic": [
+      "cool",
+      "dry"
+    ]
+  }
+]

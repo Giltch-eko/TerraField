@@ -1,0 +1,24 @@
+'use strict';
+const {chromium}=require('playwright');const assert=require('node:assert/strict');
+(async()=>{
+ const b=await chromium.launch({headless:true,args:['--no-sandbox']});const p=await b.newPage({viewport:{width:1440,height:900},ignoreHTTPSErrors:true});const errors=[];p.on('pageerror',e=>errors.push(e.message));
+ const base=process.env.TERRAFIELD_TEST_URL||'http://127.0.0.1:8000';
+ try{
+  await p.goto(base+'/#soil');await p.waitForSelector('#field-map .leaflet-control-zoom-in');await p.waitForSelector('#map-status');
+  const zoom=await p.evaluate(()=>fieldMap.getZoom());await p.click('.leaflet-control-zoom-in');await p.waitForFunction(z=>fieldMap.getZoom()===z+1,zoom);
+  await p.click('[data-field-action="reset"]');await p.waitForFunction(()=>fieldMap.getZoom()===14);
+  await p.locator('#field-map').scrollIntoViewIfNeeded();await p.waitForTimeout(500);const before=await p.evaluate(()=>fieldMap.getCenter().lng);const m=await p.locator('#field-map').boundingBox();await p.mouse.move(m.x+m.width/2,m.y+m.height/2);await p.mouse.down();await p.mouse.move(m.x+m.width/2+80,m.y+m.height/2,{steps:8});await p.mouse.up();await p.waitForTimeout(600);assert.notEqual(await p.evaluate(()=>fieldMap.getCenter().lng),before);
+  await p.click('[data-field-action="polygon"]');await p.locator('#field-map').click({position:{x:150,y:130}});await p.locator('#field-map').click({position:{x:230,y:130}});await p.locator('#field-map').click({position:{x:230,y:210}});await p.locator('#field-map').click({position:{x:150,y:210}});await p.click('[data-field-action="finish"]');assert.match(await p.locator('#field-details').innerText(),/Approximate area/);
+  await p.locator('.map-metadata summary').click();await p.fill('#map-name','Test field');await p.fill('#map-crop','Rice');await p.fill('#map-planting','2026-06-01');assert.match(await p.locator('#field-details').innerText(),/Crop: Rice/);
+  await p.click('[data-field-action="use-analysis"]');await p.selectOption('#f-soil_type','loamy');await p.fill('#f-ph','6.5');await p.fill('#f-rainfall','1200');await p.fill('#f-temperature','26');await p.selectOption('#f-season','wet');await p.click('#recommend-button');await p.waitForSelector('.rank-item');assert.match(await p.locator('.input-chips').innerText(),/Test field/);
+  await p.locator('[data-linked-crop]').first().click();await p.waitForSelector('dialog[open] .plant-detail');assert.match(await p.locator('#modal-content').innerText(),/screening engine/);await p.click('[data-action="close-modal"]');
+  await p.click('[data-action="save-report"]');await p.waitForSelector('[data-action="save-report"]:disabled');await p.reload();await p.waitForSelector('#profile-form');await p.click('.nav-item[data-nav="reports"]');await p.waitForSelector('[data-report-open]');await p.locator('[data-report-open]').first().click();await p.waitForSelector('.rank-item');assert.match(await p.locator('.input-chips').innerText(),/Test field/);
+  await p.click('.nav-item[data-nav="crops"]');await p.waitForSelector('#catalogue-query');await p.waitForFunction(()=>document.querySelector('#catalogue-count')?.textContent.includes('2,302'));assert.equal(await p.locator('#catalogue-results [data-plant]').count(),24);
+  const first=await p.locator('#catalogue-results [data-plant]').first().getAttribute('data-plant');await p.click('#catalogue-next');await p.waitForFunction(()=>document.querySelector('#catalogue-page')?.textContent.includes('Page 2'));assert.notEqual(await p.locator('#catalogue-results [data-plant]').first().getAttribute('data-plant'),first);
+  await p.fill('#catalogue-query','Zea mays');await p.waitForSelector('#catalogue-results [data-plant="ecocrop-2175"]');await p.locator('#catalogue-results [data-plant="ecocrop-2175"]').click();await p.waitForSelector('dialog[open]');assert.match(await p.locator('#modal-content').innerText(),/Zea mays/);await p.click('[data-action="close-modal"]');
+  await p.fill('#catalogue-query','');await p.waitForTimeout(350);await p.selectOption('#catalogue-type','tree');await p.waitForTimeout(600);assert.ok((await p.locator('#catalogue-count').innerText()).includes('match'));
+  for(const width of [1440,1024,768,390]){await p.setViewportSize({width,height:900});await p.goto(base+'/#soil');await p.waitForSelector('#field-map');assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`overflow at ${width}`);}
+  await p.route('https://tiles.maps.eox.at/**',route=>route.abort());await p.reload();await p.waitForFunction(()=>document.querySelector('#map-status')?.textContent.includes('could not load'),null,{timeout:15000});await p.unroute('https://tiles.maps.eox.at/**');
+  assert.deepEqual(errors,[]);console.log('PASS map zoom/pan/reset, point/polygon, area, profile/recommend/save/reopen, linked detail, catalogue search/filter/pagination, responsive widths, tile-error UI');
+ }finally{await b.close();}
+})().catch(e=>{console.error(e);process.exitCode=1});

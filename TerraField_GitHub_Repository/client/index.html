@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f1">
+  <meta name="description" content="Explore crop options with transparent soil and climate screening.">
+  <title>TerraField — Grow a more informed future</title>
+  <link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/vendor/leaflet/leaflet.js" defer></script>
+  <script src="/geometry.js" defer></script>
+  <script src="/csv.js" defer></script>
+  <script src="/field-map.js" defer></script>
+  <script src="/catalogue-ui.js" defer></script>
+  <script src="/advisor.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 28 28"><path d="M13.9 23V12.5M13.9 16.5C9.6 16.4 6.2 14 5.4 9.1c4.8-.3 8.2 1.5 8.5 6.2M14 12.9C14.4 8.4 17.1 5.5 22.4 5c-.1 4.8-3.3 7.8-8.4 7.9M9.1 23h9.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4.8A1.8 1.8 0 0 1 7.8 3h8.4A1.8 1.8 0 0 1 18 4.8V21l-6-3.8L6 21z"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-8M12 17c-3.8 0-6-2.1-6-5.5 3.5 0 6 1.5 6 5.5ZM12 13c0-4.1 2.4-6.8 6.5-7 0 4.2-2.2 7-6.5 7ZM8 21h8"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5M12 7.3h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h14M13 6.5l5.5 5.5-5.5 5.5"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="6.4"/><path d="m15.5 15.5 4 4"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 9 5 5 5-5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-plant" viewBox="0 0 24 24"><path d="M12 21V12M12 16C8 16 5.5 13.5 5 10c4.5-.2 7 1.7 7 6ZM12 13c.2-4 2.8-6.4 7-6.5-.2 4-2.4 6.5-7 6.5ZM7.5 21h9"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4m10.6 10.6 1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5-9-5Zm0 3.5 9 5 9-5M3 16l9 5 9-5"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.7s6.5 7.2 6.5 11.5a6.5 6.5 0 0 1-13 0C5.5 9.9 12 2.7 12 2.7Z"/><path d="M8.5 14.5c.2 1.6 1.1 2.6 2.5 2.9"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11s-7-6-7-11a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-compare" viewBox="0 0 24 24"><path d="M5 7h14m-3-3 3 3-3 3M19 17H5m3-3-3 3 3 3"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7zM17 11h.01"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 18v3h16v-3"/></symbol>
+</svg>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a href="#analysis" class="brand" data-nav="analysis" aria-label="TerraField home">
+      <span class="brand-mark"><svg><use href="#i-logo"></use></svg></span>
+      <span><span class="brand-name">Terra<span>Field</span></span><span class="brand-sub">CROP PLANNING</span></span>
+    </a>
+    <div class="nav-heading">YOUR WORKSPACE</div>
+    <nav class="side-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-nav="analysis"><svg class="icon"><use href="#i-grid"></use></svg><span>New analysis</span><span class="nav-dot"></span></button>
+      <button class="nav-item" data-nav="reports"><svg class="icon"><use href="#i-bookmark"></use></svg><span>Saved reports</span><span class="nav-count" id="report-count"></span></button>
+      <button class="nav-item" data-nav="crops"><svg class="icon"><use href="#i-sprout"></use></svg><span>Plant catalogue</span></button>
+      <button class="nav-item" data-nav="advisor"><svg class="icon"><use href="#i-plant"></use></svg><span>Organic farming guide</span></button>
+      <div class="nav-heading nav-heading-inner">DISCOVER</div>
+      <button class="nav-item" data-nav="soil"><svg class="icon"><use href="#i-globe"></use></svg><span>Global soil data</span></button>
+      <button class="nav-item" data-nav="method"><svg class="icon"><use href="#i-info"></use></svg><span>Our methodology</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="side-note">
+        <div class="side-note-icon"><svg class="icon"><use href="#i-plant"></use></svg></div>
+        <strong>Good things grow<br>with good information.</strong>
+        <p>A little clarity for the decisions ahead.</p>
+        <button class="side-link" data-nav="method">See how it works <svg class="icon"><use href="#i-arrow"></use></svg></button>
+      </div>
+      <div class="side-foot"><span class="status-dot"></span><span>HACK-P302 <span class="foot-sep">·</span> Student prototype</span></div>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="topbar-left"><button id="mobile-menu" class="mobile-menu icon-button" aria-label="Open navigation"><svg class="icon"><use href="#i-menu"></use></svg></button><span>WORKSPACE</span><span class="slash">/</span><strong id="breadcrumb">NEW ANALYSIS</strong></div>
+      <div class="topbar-right"><span class="topbar-note"><svg class="icon"><use href="#i-sprout"></use></svg> Thoughtful decisions start here</span><span class="topbar-divider"></span><button class="help-button" data-nav="method"><svg class="icon"><use href="#i-info"></use></svg> About</button></div>
+    </header>
+    <main id="app" tabindex="-1"><div class="loading-screen"><span class="spinner"></span> Getting your workspace ready…</div></main>
+    <footer class="footer"><span>© TerraField <span class="footer-dot">·</span> A student decision-support prototype</span><span>Made for more informed growing <span class="footer-leaf">✳</span></span></footer>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<dialog id="modal" class="modal"><div id="modal-content"></div></dialog>
+</body>
+</html>

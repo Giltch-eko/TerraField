@@ -1,0 +1,25 @@
+{
+  "name": "terrafield-crop-planning",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TerraField local crop screening prototype",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "start": "node node-server/app.js",
+    "test": "node --test tests/node_tests.js tests/additional_tests.js tests/catalogue_tests.js tests/migration_tests.js tests/advisor_tests.js",
+    "test:browser": "node tests/browser_test.js",
+    "build:plant-library": "node tools/build-plant-library.js",
+    "test:enhanced": "node tests/enhanced_browser_test.js",
+    "test:global-map": "node tests/global_map_test.js",
+    "test:advisor": "node --test tests/advisor_tests.js",
+    "test:advisor-browser": "node tests/advisor_browser_test.js",
+    "test:audit": "node --test tests/audit_tests.js",
+    "test:audit-browser": "node tests/audit_browser_test.js",
+    "test:soil-only-map": "node tests/soil_only_map_test.js"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

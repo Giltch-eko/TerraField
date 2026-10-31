@@ -1,0 +1,75 @@
+> **Source-export restoration note (2026-10-30):** This file describes the original full bundle. The offline GeoNames index, original hero and original Windows runtime were omitted from the supplied export. Online place search and coordinate entry remain available; see the current README for verified status. The hero is an AI-generated replacement.
+
+# Global soil data used by TerraField
+
+## Worldwide live lookup
+
+TerraField uses ISRIC **SoilGrids 2.0** global, modelled soil-property predictions, not laboratory tests. On the Global soil data page, search for a place or enter field coordinates, select a soil depth, request an estimate, and choose **Use in profile**. The nominal resolution is approximately 250 m. The six standard depth intervals are **0–5, 5–15, 15–30, 30–60, 60–100 and 100–200 cm**; the default and all bundled snapshots are 0–5 cm. A location may be masked, a town centre may not be your field, and individual properties may be missing. The app requests pH in water, sand, silt and clay, soil organic carbon, total nitrogen, cation-exchange capacity and bulk density.
+
+For REST results, the app requests the mean and (where provided) **Q0.05 and Q0.95**, which bound a *modelled nominal 90% prediction interval* for each soil property. This is an uncertainty interval, not a claim of 90% or 99% point accuracy. Calibration can vary by property and location; the true field value may fall outside the interval. When used in a profile, the original pH interval (if available), source method and depth are retained in saved reports, even if the user later edits pH. The crop ranking uses the selected mean pH and coarse texture, **not the uncertainty intervals**. Verify the relevant root-zone soil conditions with local measurements and expert advice. See [ISRIC's explanation of quantiles and conversion factors](https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html) and [Poggio et al. (2021)](https://soil.copernicus.org/articles/7/217/2021/).
+
+Live lookup requires internet and sends the requested coordinate and depth to ISRIC. ISRIC warns its REST service may be paused or unavailable, despite working in some checks. On REST failure (not on a masked result or explicit rate limit), TerraField tries the **official ISRIC WCS** for the same point and depth. The fallback requests only pH, sand and clay, as rate limits permit; it does not request other properties or uncertainty intervals. It reads a small WGS84 GeoTIFF using its geographic transformation; zero and other no-data pixels are conservatively treated as missing. The fallback may also fail, including near the poles or the date line, and never guarantees coverage. A maximum of five REST and WCS provider requests combined is allowed per minute in one app process; one fallback can consume several requests. Successful REST responses are cached for 24 hours and fallback responses for 10 minutes. If neither service can provide data, use a saved sample or enter measured values manually.
+
+The 12 saved samples below work offline. They are selected, dated **individual points** from six inhabited continents, not complete offline global coverage or averages for a country or region. The values may be stale, generalized or uncertain.
+
+## Offline point snapshots
+
+| Point | Coordinates (latitude, longitude) | pH | Sand % | Silt % | Clay % | Organic carbon g/kg | Total N g/kg | CEC cmol(+)/kg | Bulk density kg/dm³ | Retrieved UTC |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| Telangana, India | 17.68, 78.18 | 7.4 | 37.2 | 25.9 | 36.9 | 14.1 | 1.83 | 36.2 | 1.59 | 2026-10-28T10:40:44Z |
+| Iowa, United States | 41.9, -93.7 | 6.4 | 43.4 | 32.5 | 24.1 | 17.5 | 2.1 | 24.2 | 1.47 | 2026-10-28T10:40:48Z |
+| Central highlands, Kenya | -0.72, 36.38 | 7.0 | 38.0 | 31.8 | 30.2 | 30.3 | 2.67 | 23.7 | 1.23 | 2026-10-28T10:40:52Z |
+| Cerrado, Brazil | -15.6, -47.75 | 5.3 | 28.3 | 25.1 | 46.6 | 24.5 | 1.65 | 9.1 | 1.16 | 2026-10-28T10:40:55Z |
+| Centre-Val de Loire, France | 48.16, 1.6 | 6.9 | 9.3 | 60.8 | 29.9 | 32.9 | 5.29 | 24.8 | 1.31 | 2026-10-28T10:40:58Z |
+| North China Plain, China | 36.8, 115.3 | 7.8 | 54.2 | 30.5 | 15.3 | 9.6 | 1.37 | 21.1 | 1.35 | 2026-10-28T14:22:10Z |
+| Pampas, Argentina | -33.8, -60.0 | 6.4 | 9.4 | 62.6 | 27.9 | 27.5 | 2.45 | 25.7 | 1.35 | 2026-10-28T14:22:21Z |
+| Saskatchewan, Canada | 52.1, -106.3 | 6.9 | 43.2 | 30.4 | 26.4 | 39.9 | 3.85 | 25.7 | 1.21 | 2026-10-28T14:23:56Z |
+| Free State, South Africa | -27.45, 27.8 | 6.6 | 56.3 | 17.0 | 26.7 | 17.9 | 1.45 | 23.8 | 1.39 | 2026-10-28T14:24:01Z |
+| Andalusia, Spain | 37.7, -5.5 | 7.2 | 28.4 | 38.3 | 33.3 | 23.9 | 2.01 | 20.5 | 1.39 | 2026-10-28T14:24:05Z |
+| Mymensingh, Bangladesh | 24.7, 90.35 | 5.8 | 31.9 | 44.1 | 24.0 | 18.4 | 1.48 | 19.9 | 1.29 | 2026-10-28T14:24:09Z |
+| Queensland, Australia | -27.5, 151.5 | 8.0 | 26.3 | 18.6 | 55.2 | 36.2 | 1.61 | 44.5 | 1.29 | 2026-10-28T14:25:01Z |
+
+All numbers are SoilGrids mean predictions for 0–5 cm; fractions can sum slightly above or below 100% because of rounding. Source: [ISRIC SoilGrids](https://isric.org/explore/soilgrids), [unit conversions](https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html), CC BY 4.0. Cite: Poggio et al., “SoilGrids 2.0: producing soil information for the globe with quantified spatial uncertainty,” *SOIL* 7, 217–240 (2021), [doi:10.5194/soil-7-217-2021](https://doi.org/10.5194/soil-7-217-2021).
+
+**Total N is not plant-available nitrogen.** SoilGrids does not provide available phosphorus or potassium here. N/P/K entered in TerraField are recorded but not scored. Never copy the mapped total-N value into the available-N field. The texture label is a coarse application heuristic, not a USDA classification.
+
+## Worldwide place search (not soil data)
+
+The Search button combines these independently attributed sources:
+
+1. **Bundled GeoNames index:** extracted from [GeoNames downloads](https://download.geonames.org/export/dump/), retrieved 2026-10-28, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The `cities500` subset contains 236,815 selected populated-place records (population above 500 or selected administrative seats); a filtered `allCountries` extract adds 252 country/territory entries (including two historical entities), 3,865 first-level and 47,762 second-level administrative records. Total **288,694 place records**. Most country and first-level administrative records retain exported aliases; other aliases are size-limited and selected across writing systems. Counts, retrieval time and a SHA-256 checksum are in `server/data/place-dataset-info.json`. This dated index omits many villages, geographic features and spellings.
+2. **Photon / OpenStreetMap:** [Photon's public API](https://photon.komoot.io/) searches online [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL. Photon is a shared fair-use service, can throttle requests and has no uptime guarantee.
+3. **Open-Meteo geocoding:** the [Open-Meteo API](https://open-meteo.com/en/docs/geocoding-api) supplies further online GeoNames-based place matches. Its free API is intended for non-commercial use.
+
+These are reference points, not surveyed field boundaries or soil measurements; names, spelling, boundaries and coordinates can be incomplete or approximate. Places can share names, and a country or region result is just a point inside or associated with that area. Confirm the match and adjust coordinates to the actual field. No geocoder or dataset guarantees coverage of every place. Search terms are sent to Photon and Open-Meteo when online; do not include confidential personal details. Queries are user-initiated, spaced and cached locally. Offline place search is different from the **12 offline soil snapshots** above: looking up a new place offline does not create soil data for that place.
+
+## Other reference datasets
+
+[FAO/IIASA Harmonized World Soil Database v2.0](https://www.fao.org/soils-portal/data-hub/soil-maps-and-databases/harmonized-world-soil-database-v20/en/) is another global soil inventory at roughly 1 km. It is an external reference **not queried by this edition**; its values and depth intervals should not be silently mixed with SoilGrids.
+
+
+
+## Current weather and air quality
+
+The Global soil data page requests the selected coordinates from two independent services in parallel: [Open-Meteo weather forecast](https://open-meteo.com/en/docs) and [Open-Meteo air quality](https://open-meteo.com/en/docs/air-quality-api). Both return model estimates, **not direct measurements at the field**. Weather includes 2 m temperature (°C) and relative humidity (%), precipitation (mm summed over the **preceding returned interval**), and wind speed, direction and gusts at 10 m (km/h, degrees from north for direction). The app requests °C, mm and km/h explicitly and rejects values when expected units, metadata or physical bounds are invalid. Zero precipitation is kept as zero; missing values remain null.
+
+Air quality includes the **US** AQI, PM2.5 and PM10 (μg/m³). It uses CAMS atmospheric-composition forecasts, not a nearby sensor. Open-Meteo describes the global CAMS dataset as approximately 45 km / 3-hourly and the European model as approximately 11 km / hourly; updates and data availability vary. The *returned current interval* describes API output and must not be mistaken for the resolution or issue time of the underlying model. US AQI may exceed 500; its modeled category is not a substitute for local official air monitoring or health advice.
+
+For each section the UI preserves the provider's separate model-valid local time, time zone, interval and model-grid coordinates, plus the UTC retrieval time. It computes the local model time's UTC equivalent using the provider's offset. It does **not** know the model's actual initialization/issue time. An age over two hours for weather or six hours for air is labelled stale; a model time more than five minutes in the future is flagged. These are **prototype display thresholds**, not guarantees of accuracy or provider freshness. The age display advances while the page is open. Refresh by pressing the weather button again; values are not automatically updated. The provider may return old, missing or interpolated values, or either feed may fail independently; successful parts remain visible with explicit warnings. If both fail, the API returns an error rather than inventing values.
+
+The app coalesces concurrent requests for one coordinate and keeps full results in process memory for 60 seconds (partial results for 15 seconds). It neither guarantees uptime nor has independently established **99% accuracy or availability**. Open-Meteo's free public API is for non-commercial use and subject to its stated fair-use limits; review [terms](https://open-meteo.com/en/terms) for other deployments. Coordinates are sent to both Open-Meteo endpoints when requested. Only valid available temperature and humidity can be copied to a profile; missing components are cleared, not borrowed from an old location. Current conditions are not growing-season averages. Precipitation over 15 minutes or another short interval is **not** annual rainfall and is never copied to the annual rainfall field.
+
+## Useful plant reference library
+
+The offline library is adapted from the [FAO ECOCROP catalogue](https://data.apps.fao.org/catalog/dataset/ecocrop) (FAO Land and Water Division; catalogue license [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)), retrieved **2026-10-29**, using these pinned mirrors of historical data:
+
+1. [OpenCLIM `EcoCrop_DB.csv`, commit ea43ecd](https://raw.githubusercontent.com/OpenCLIM/ecocrop/ea43ecd418fd1a1ea08d32c7dce64b7fae02dec4/EcoCrop_DB.csv), 2,568 source records; SHA-256 of the uncompressed bytes `4187e8846336e185c4583165211c5981855e95adfbefd897bd2bd481de48d106`. The CSV was present in that mirror in 2022.
+2. [EcoCrop-ScrapeR `crop_uses.csv`, commit 86e861f](https://raw.githubusercontent.com/supersistence/EcoCrop-ScrapeR/86e861f09a5ecb4dd1b39999ed82399f9bf98731/crop_uses.csv), a 2017 scrape of FAO use tables; SHA-256 `03afa068e7ce3bf559a2e1f716678580b9ad76d217fd8552ef3c000967e1e256`. Attribution to FAO and to the scraper's repository is retained. The repository does not state a separate license for its scraper code; that code is not bundled here.
+
+TerraField joins on the ECOCROP numeric ID, deduplicates identical use rows, preserves common/scientific names, documented use categories/parts and life-form, removes one markup-bearing common-name heading rather than treating it as a name, and displays validated ecological ranges when present. **2,302 reference records** remain, of which **1,057** include `tree` among their recorded life-forms. They include species and some subspecies/varieties; they are not a count of all world species. The filtering is a change to the sources: 260 records with no documented use/category, 5 with only a poison use, and one source-weed-labelled record with only environmental use are excluded. For one plant (*Passiflora edulis*), a documented fruit/nut crop category supplies the use evidence because use rows are absent.
+
+Of the remaining records, 129 are labelled `weed` in an ECOCROP category but have a recorded direct food, feed, material, fuel or medicinal purpose. These include important food crops such as basil and guava. To respect the request to avoid unnecessary weeds, the UI **hides all 129 by default**; users may uncheck the filter to inspect them as references, with a prominent weed-label warning. The default view thus contains **2,173 records**, including **1,016** with a tree life-form. A `weed` label is context-dependent, and this source flag is not a complete local weed/invasiveness assessment. Other plants can be invasive or toxic, and none is automatically safe, legal, effective as a medicine, locally suitable or recommended for planting.
+
+Source ranges are shown only if finite, plausible and ordered `absolute minimum ≤ optimal minimum ≤ optimal maximum ≤ absolute maximum`; otherwise they are missing, not corrected. Names, taxonomy, encoding, uses, ecological ranges and older source records can be outdated, incomplete, or wrong. Open the linked FAO record and consult current regional agronomic, environmental and legal guidance. Some useful plants are hidden by the default weed filter or absent because use evidence is missing, and this library cannot claim global completeness or 99% accuracy. It is a reference, **not a ranked list**. The screening engine continues to use only its separate, unchanged 21-crop profile set and its transparent prototype rules; see [METHOD.md](METHOD.md).
+
+The compressed source bytes are bundled under `server/data/source/`; the derived JSON is `server/data/plant-library.json`. `tools/build-plant-library.js` verifies both uncompressed SHA-256 hashes and regenerates the reference set without Python or third-party packages. On Windows, run `runtime\node.exe tools\build-plant-library.js --check` to verify byte-for-byte reproduction. These transformations are TerraField's, not FAO endorsement.

@@ -1,0 +1,15 @@
+{
+  "source": "GeoNames cities500, countryInfo and administrative features from allCountries",
+  "licence": "CC BY 4.0",
+  "date_utc": "2026-10-28T15:11:34Z",
+  "counts": {
+    "city500": 236815,
+    "ADM1": 3865,
+    "country": 252,
+    "ADM2": 47762
+  },
+  "total": 288694,
+  "dataset_sha256": "35908994cd1246bc1de5b5799eeee06cc5d048338b052979fa8f04a64d4e47da",
+  "alternate_names": "A size-limited, multilingual selection; most countries and first-level regions retain exported aliases; large cities retain more aliases. Online providers may find additional names.",
+  "country_record_note": "The 252 GeoNames country/territory records include two historical entities; historic and abandoned places are labelled."
+}
